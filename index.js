@@ -11,7 +11,8 @@ app.get('/', (request, response) => {
 });
 
 app.get('/auth/discord', (request, response) => {
-	return response.sendFile('dashboard.html', { root: '.' });
+	return response.sendFile('game.html', { root: '.' });
 });
 
-app.listen();
+app.listen(3000);
+console.log("http://localhost:3000")

@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/">
+  <link rel="stylesheet" href="style.css" >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Your berry farm</title>
+</head>
+<body>
+    <div class="flex items-center justify-center h-screen bg-discord-gray text-white flex-col">
+        <div id = 'left' class="text-2xl">👋 Welcome to the berry <img style="display: inline-block;" src="./berries.webp" /> farm,</div>
+        <div class="text-4xl mt-3 flex items-center font-medium" >
+            <img src='' id="avatar" class="rounded-full w-12 h-12 mr-3"/>
+            <div id="name"></div>
+        </div> &nbsp
+        <div class="align-left">
+        <img style="display: inline-block;" src="./wow.png" />
+        <img style="display: inline-block;" class="pulse" src="./blueeberry.png" onclick="clickEvent()" /> &nbsp
+        </div>
+        <div> <h1 style="display: inline-block;">You are currently Level</h1>
+        <h1 style="display: inline-block;" id="level"> Loading...</h1> 
+        </div>
+        <div> <p style="display: inline-block;">You currently have</p>
+        <p style="display: inline-block;" id="collected"> Loading...</p>
+        <p style="display: inline-block;">berries in your purse.</p>  
+        </div> &nbsp
+        <button onclick="upgradeBerry()">Upgrade your berry </button>
+        <div> <p style="display: inline-block;">Current Level:</p>
+        <p style="display: inline-block;" id="upgrades"> Loading...</p>
+        </div>
+        <div> <p style="display: inline-block;">Cost for next Level:</p>
+        <p style="display: inline-block;" id="upgrades_cost"> Loading...</p>
+        </div> &nbsp
+        <button onclick="fertilizeBerry()">Buy fertilizer </button>
+        <div> <p style="display: inline-block;">Current Level:</p>
+        <p style="display: inline-block;" id="click"> Loading...</p>
+        </div>
+        <div> <p style="display: inline-block;">Cost for next Level:</p>
+        <p style="display: inline-block;" id="click_cost"> Loading...</p>
+        </div> &nbsp
+        <div>
+        <img style="display: inline-block;" src="./confused.png" /> 
+        <a style="display: inline-block;" href="/" class="text-sm mt-5">Logout</a>
+        </div>
+    </div>
+
+    <footer>
+        <div> <img style="display: inline-block;" src="./love.png" />
+            <p style="display: inline-block;">In total you have </p>
+            <p style="display: inline-block;" id="all_berries"> Loading...</p> 
+            <p style="display: inline-block;">berries collected.</p>  
+        </div>
+
+        🎶 Music made by <a href="https://pixabay.com/music/beats-game-music-loop-2-144037/">XtremeFreddy</a> | 
+        <audio autoplay id="myAudio" style="display: inline-block;" loop="loop" controls>
+            <source src="music.mp3" type="audio/mpeg">
+        </audio>
+
+    </footer>
+
+<script>
+  window.onload = () => {
+    const fragment = new URLSearchParams(window.location.hash.slice(1));
+    const [accessToken, tokenType] = [fragment.get('access_token'), fragment.get('token_type')];
+
+    if (!accessToken) {
+        window.location.href('/')
+    }
+
+    fetch('https://discord.com/api/users/@me', {
+    headers: {
+        authorization: `${tokenType} ${accessToken}`,
+    },
+    })
+    .then(result => result.json())
+    .then(response => {
+        console.log(response);
+        const { username, discriminator, avatar, id} = response;
+        //set the welcome username string
+        document.getElementById('name').innerText = ` ${username}#${discriminator}`;
+
+        //set the avatar image by constructing a url to access discord's cdn
+        document.getElementById("avatar").src = `https://cdn.discordapp.com/avatars/${id}/${avatar}.jpg`;
+    })
+    .catch(console.error);
+
+
+};
+
+var level = 1
+var all_berries = 0
+var berries = 9999999999
+
+var multiplier = 1
+var multiplier_cost = 1000
+
+var click = 1
+var click_cost = 100
+
+document.getElementById("collected").innerText = `${berries}`;
+document.getElementById("upgrades").innerText = `${multiplier}`;
+document.getElementById("upgrades_cost").innerText = `${multiplier_cost}`;
+document.getElementById("click").innerText = `${click}`;
+document.getElementById("click_cost").innerText = `${click_cost}`;
+document.getElementById("level").innerText = `${level}`;
+document.getElementById("all_berries").innerText = `${all_berries}`;
+
+function clickEvent() {
+    berries_before = berries
+    berries = berries + (1 * click)
+    all_berries = all_berries + (1 * click)
+    berries_after = berries
+
+    document.getElementById("collected").innerText = `${berries}`;
+    document.getElementById("all_berries").innerText = `${all_berries}`;
+
+    function level() {
+        if (all_berries > 250) {
+            level = 2
+            document.getElementById("level").innerText = `${level}`;
+        } if (all_berries > 750) {
+            level = 3
+            document.getElementById("level").innerText = `${level}`;
+        } if (all_berries > 2000) {
+            level = 4
+            document.getElementById("level").innerText = `${level}`;
+        }
+    }
+
+    level()
+}
+
+function upgradeBerry() {
+    if (berries >= multiplier_cost) {
+        berries = berries - multiplier_cost
+        multiplier = multiplier + 1
+        multiplier_cost = multiplier_cost * 10
+    }
+
+    if (multiplier = 2) {
+        document.getElementsByClassName("pulse")[0].src = "berry.png";
+    } else if (multiplier = 3) {
+        document.getElementsByClassName("pulse")[0].src = "berries.png";
+    } else if (multiplier = 4) {
+
+    } else if (multiplier = 5) {
+
+    }
+
+        document.getElementById("collected").innerText = `${berries}`;
+        document.getElementById("upgrades").innerText = `${multiplier}`;
+        document.getElementById("upgrades_cost").innerText = `${multiplier_cost}`;
+}
+
+function fertilizeBerry() {
+    if (berries >= click_cost) {
+        berries = berries - click_cost
+        click = click + 1
+        click_cost = click_cost * 4
+        document.getElementById("collected").innerText = `${berries}`;
+        document.getElementById("click").innerText = `${click}`;
+        document.getElementById("click_cost").innerText = `${click_cost}`;
+    }
+}
+
+</script>
+</body>
+</html>

@@ -124,18 +124,82 @@ Remove the default font size and weight for headings.
   animation-play-state: running;
 }
 
+.left {
+  margin-left: auto;
+}
+
+audio {
+  height:20px; 
+  width:350px;
+  background-color: #36393E;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: #36393E;
+}
+
+#Splash {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 1s;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+  pointer-events: none;
+}
+
+#Splash.fade{
+  opacity: 1
+}
+
+#Timer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 1s;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+  pointer-events: none;
+}
+
+#Timer.fade{
+  opacity: 1
+}
+
 .align-left {
   text-align: left; /* set the alignment of the images within the parent element */
 }
 
+footer {
+  background-color: #36393E;
+  text-align: center;
+  color: white;
+}
 
 h1 {
   size: 100cm;
 }
-h2,
+h2 { 
+  color: white;
+}
 h3,
 h4,
-h5,
+h5 {
+  color: red;
+  font-size: 650%;
+} 
 h6 {
   font-size: inherit;
   font-weight: inherit;

@@ -4,27 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <base href="/">
-  <link rel="stylesheet" href="berry.css" >
+  <link rel="stylesheet" href="style.css" >
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>berry server game</title>
 </head>
   <body>
-    <div class="flex items-center justify-center h-screen bg-discord-gray text-white">
-      <div class="flex flex-col items-center">
-        <h1 style="display: inline-block;">The berry Discord Server <img style="display: inline-block;" src="./cool.jpg" /> </h1> &nbsp
-        <img class="rotate" src="./berry.png" /> &nbsp
-        <a
-          id="login"
-          href="https://discord.com/api/oauth2/authorize?client_id=842408376759615508&redirect_uri=https%3A%2F%2Fberryserver.github.io%2Fberry-farm-game%2Fauth%2Fdiscord&response_type=token&scope=identify"
-          class="bg-discord-blue text-xl px-5 py-3 rounded-md font-bold flex items-center space-x-4 hover:bg-gray-600 transition duration-75"
-        >
-          <i class="fa-brands fa-discord text-2xl"></i>
-          <p>x</p>
-          <img src="./blueberry.png" />
-          <span>Login with Discord</span>
-        </a> &nbsp
-        <h2>Note: For this page to work, we need to access your Discord Name, Avatar and ID.</h2>
-        <h2>To report Bugs or give feedback, please message @KampfZomby#4574 on Discord. <img style="display: inline-block;" src="./ping.webp" /></h2>
-      </div>
-    </div>
-  </body>  
+      <div class="flex items-center justify-center h-screen bg-discord-gray text-white">
+        <div class="flex flex-col items-center">
+          <img style="display: inline-block;" src="./hi.webp" />
+          <h1 style="display: inline-block;">The berry Discord Server <img style="display: inline-block;" src="cool.jpg" /> </h1> &nbsp
+          <img class="rotate" src="berry.png" /> &nbsp
+          <a
+            id="login"
+            href="https://discord.com/api/oauth2/authorize?client_id=842408376759615508&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Fdiscord&response_type=token&scope=identify"
+            class="bg-discord-blue text-xl px-5 py-3 rounded-md font-bold flex items-center space-x-4 hover:bg-gray-600 transition duration-75"
+          >
+            <i class="fa-brands fa-discord text-2xl"></i>
+            <p>x</p>
+            <img src="blueberry.png" />
+            <span>Login with Discord</span>
+          </a> &nbsp
+          <h2>Don't even try to cheat! We will get you! <img style="display: inline-block;" src="./ban.webp" /></h2>
+          <h2> <img style="display: inline-block;" src="./ok.webp" /> Note: For this page to work, we need to access your Discord Name, Avatar and ID.</h2>
+          <h2>To report Bugs or give feedback, please message @KampfZomby#4574 on Discord. <img style="display: inline-block;" src="./ping.webp" /></h2>
+        </div>
+      </div>  
+    <footer> Not associated with <i class="fa-brands fa-discord text-2xl"></i> <a href="https://www.discord.com">Discord!</a> <br> Working with <a href="https://www.supabase.com">Supabase</a> <br> © <a href="https://discord.com/invite/CHHwNk5QuS">berry Discord server</a> <br> Find the project on <i class="fa-brands fa-github text-2xl"></i> <a href="https://github.com/berryserver/berry-farm-game">Github</a></footer> 
+  </body>
 </html>
